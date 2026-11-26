@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PANDAFLIX - Nuestra Historia</title>
+    <link rel="icon"  type="image/x-icon" href="img/favicon.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Perfiles</a>
+
+    <!-- PANTALLA PRINCIPAL -->
+    <div id="main-screen" class="screen active">
+        <header class="navbar">
+            <h1 class="logo">PANDAFLIX</h1>
+            <div class="icons">
+                <i class="fas fa-search"></i>
+                <i class="fas fa-user"></i>
+            </div>
+        </header>
+
+
+        <div class="hero">
+           
+            <video class="hero-video" autoplay muted loop playsinline>
+                <source src="video/video2.mp4" type="video/mp4">
+              
+            </video>
+            
+          
+            <div class="hero-gradient"></div>
+
+            <div class="hero-overlay">
+                
+                <div class="tags">
+                    <span class="tag-green">100% Amor</span>
+                    <span class="tag-text">Cap. 1</span>
+                    <span class="tag-hd">HD</span>
+                </div>
+
+               
+                <h2>ERES MI DESTINO, AMOR MÍO</h2>
+                <p class="synopsis">Una serie original basada en hechos reales. Temporada infinita.</p>
+
+                <!-- Botones -->
+                <div class="buttons">
+                    <button class="btn-play" onclick="alertaPlay()"><i class="fas fa-play"></i> Reproducir</button>
+                    <!-- Este botón abre el modal de la foto principal -->
+                    <button class="btn-info" onclick="abrirModal('img/foto3.jpg', 'Nuestra Historia', '1 año y 7 meses de amor.', 'Cap. 1')"><i class="fas fa-info-circle"></i> Más Info</button>
+                </div>
+
+                
+            </div>
+        </div>
+
+        <!-- Sección: Momentos Inolvidables -->
+        <div class="row">
+            <h3>Momentos Inolvidables</h3>
+            <div class="carousel">
+                <div class="card" onclick="abrirModal('video/video5.mp4', '', '', 'Cap. 1')">
+                    <img src="img/foto3.jpg" alt="Foto 1">
+                </div>
+                <div class="card" onclick="abrirModal('video/video4.mp4', '', '', 'Cap. 2')">
+                    <img src="img/foto4.jpg" alt="Foto 2">
+                </div>
+                <div class="card" onclick="abrirModal('video/video3.mp4', '', '', 'Cap. 3')">
+                    <img src="img/foto5.jpg" alt="Foto 3">
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección: Porque te amo -->
+        <div class="row">
+            <h3>Porque te amo</h3>
+            <div class="carousel">
+                <div class="card" onclick="abrirModal('img/foto6.jpg', '', '', 'Cap. 4')">
+                    <img src="img/foto6.jpg" alt="Foto 4">
+                </div>
+                <div class="card" onclick="abrirModal('video/video6.mp4', '', '', 'Cap. 5')">
+                    <img src="img/foto.jpg" alt="Foto 5">
+                </div>
+            </div>
+        </div>
+    </div> 
+
+        <!-- MODAL (La ventana que se abre al hacer clic) -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModal()">&times;</span>
+            
+            <!-- Contenedor de la imagen/video del modal -->
+            <div class="modal-media">
+                <img id="modal-img" src="" alt="Foto" style="display: block;">
+                <!-- NUEVO: Etiqueta para el video -->
+                <video id="modal-video" controls playsinline style="display: none;"></video>
+                <div class="modal-gradient"></div>
+            </div>
+
+            <!-- Etiquetas dentro del modal -->
+            <div class="tags modal-tags">
+                <span class="tag-green">100% Amor</span>
+                <span class="tag-text" id="modal-cap">Cap. 1</span>
+                <span class="tag-hd">HD</span>
+            </div>
+
+            <h2 id="modal-title">Título</h2>
+            <p id="modal-desc" class="modal-desc">Descripción...</p>
+
+            <!-- Botones -->
+            <div class="modal-buttons">
+                <button class="btn-play" onclick="alertaPlay()"><i class="fas fa-play"></i> Reproducir</button>
+                <button class="btn-info"><i class="fas fa-plus"></i> Mi Lista</button>
+            </div>
+
+            <!-- Detalles del Elenco -->
+            <div class="details modal-details">
+                <p><span class="detail-label">Elenco:</span> Tú y Yo</p>
+                <p><span class="detail-label">Género:</span> Romance</p>
+                <p><span class="detail-label">Recuerdo:</span> Inolvidable</p>
+            </div>
+            
+            <p style="color: wheat; font-size: 12px; margin-top: 15px; text-align: center; font-weight: bold;">1 año y 6 meses a tu lado ❤️</p>
+        </div>
+    </div>
+
+   
+
+    <script src="script.js"></script>
+</body>
+</html>
