@@ -3,16 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PANDAFLIX</title> 
-    <link rel="icon"  type="image/x-icon" href="img/favicon.png">
+    <title>PANDAFLIX</title>
+    <link rel="icon" type="image/png" href="img/favicon.png">
     <link rel="stylesheet" href="style_perfiles.css">
-</head> 
+</head>
+<body>
 
-<body>  
+    <!-- PANTALLA DE INICIO (Cubre todo al principio) -->
+    <div id="intro-screen" style="position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background-color: #000; display: flex; justify-content: center; align-items: center; z-index: 9999; cursor: pointer;">
+        <h1 style="color: #E50914; font-size: 4rem; font-weight: 900; letter-spacing: 2px; font-family: 'Helvetica Neue', sans-serif;">PANDAFLIX</h1>
+    </div>
+
+    <!-- Tu contenedor de perfiles original -->
     <div class="profile-container">
-        <h1>¿Quién está viendo?</h1>
+        <h1 class="netflix-intro">¿Quién está viendo?</h1>
+        
         <div class="profiles">
-          
             <a href="home.html" class="profile">
                 <img src="img/foto2.jpg" alt="Tú"> 
                 <p>Tú</p>
@@ -23,8 +29,37 @@
                 <p>Mi Amor</p>
             </a>
         </div>
-        
     </div>
 
+    <!-- Audio del intro -->
+    <audio id="sonido-netflix" preload="auto">
+        <source src="audio/netflix.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const introScreen = document.getElementById('intro-screen');
+            const sonidoNetflix = document.getElementById('sonido-netflix');
+
+            // Cuando ella toque la pantalla de inicio...
+            introScreen.addEventListener('click', function() {
+                // 1. Reproducimos el sonido
+                sonidoNetflix.volume = 1.0;
+                sonidoNetflix.play();
+
+                // 2. Hacemos que la pantalla negra desaparezca con una animación suave
+                introScreen.style.transition = "opacity 1s ease";
+                introScreen.style.opacity = "0";
+
+                // 3. La quitamos del todo después de 1 segundo
+                setTimeout(() => {
+                    introScreen.style.display = "none";
+                }, 1000);
+            });
+
+            // (Opcional) Si quieres que al tocar un perfil suene otro sonido o haga otra cosa,
+            // puedes dejar el código que tenías antes aquí.
+        });
+    </script>
 </body>
 </html>
