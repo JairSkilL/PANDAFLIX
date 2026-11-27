@@ -49,7 +49,7 @@
                 <div class="buttons">
                     <button class="btn-play" onclick="alertaPlay()"><i class="fas fa-play"></i> Reproducir</button>
                     <!-- Este botón abre el modal de la foto principal -->
-                    <button class="btn-info" onclick="abrirModal('img/foto3.jpg', 'Nuestra Historia', '1 año y 7 meses de amor.', 'Cap. 1')"><i class="fas fa-info-circle"></i> Más Info</button>
+                    <button class="btn-info" onclick="abrirModal('img/foto3.jpg', 'Nuestra Historia', '1 año y 6 meses de amor.', 'Cap. 1')"><i class="fas fa-info-circle"></i> Más Info</button>
                 </div>
 
                 
@@ -124,10 +124,39 @@
             
             <p style="color: wheat; font-size: 12px; margin-top: 15px; text-align: center; font-weight: bold;">1 año y 6 meses a tu lado ❤️</p>
         </div>
-    </div>
+    </div> 
+
+    <audio id="musica-fondo" loop>
+        <source src="audio/luis.mp3" type="audio/mpeg">
+    </audio>
 
    
 
-    <script src="script.js"></script>
+    <script src="script.js"></script> 
+
+       <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const audio = document.getElementById('musica-fondo');
+            
+            // Ajustamos el volumen (0.4 es 40%, para que no asuste)
+            audio.volume = 0.4; 
+
+            // Función para intentar reproducir
+            function intentarReproducir() {
+                audio.play().then(() => {
+                    // Si logra sonar, quitamos el evento de clic para que no se repita
+                    document.removeEventListener('click', intentarReproducir);
+                }).catch(error => {
+                    console.log("El navegador bloqueó el autoplay. Se necesita un clic.");
+                });
+            }
+
+            // 1. Intentamos reproducir nada más entrar
+            intentarReproducir();
+
+            // 2. Si falla, se reproducirá en el primer clic que ella haga en la pantalla
+            document.addEventListener('click', intentarReproducir);
+        });
+    </script>
 </body>
 </html>
